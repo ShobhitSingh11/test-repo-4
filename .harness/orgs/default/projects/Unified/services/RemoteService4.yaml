@@ -1,0 +1,5 @@
+service:
+  name: RemoteService4
+  identifier: RemoteService4
+  orgIdentifier: default
+  projectIdentifier: Unified

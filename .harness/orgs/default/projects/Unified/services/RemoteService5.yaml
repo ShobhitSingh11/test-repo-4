@@ -3,3 +3,38 @@ service:
   identifier: RemoteService5
   orgIdentifier: default
   projectIdentifier: Unified
+  serviceDefinition:
+    spec:
+      manifests:
+        - manifest:
+            identifier: Manifest
+            type: K8sManifest
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: ShobhitGitConnector
+                  gitFetchType: Commit
+                  paths:
+                    - test/k8s/examples/simple/templates
+                  commitId: 213baca7e6f988356f3ce68c076c7bfc5f7eb8e2
+              valuesPaths:
+                - test/k8s/examples/simple/rollback-correct-values.yaml
+              skipResourceVersioning: false
+              enableDeclarativeRollback: false
+      artifacts:
+        primary:
+          primaryArtifactRef: Artifact
+          sources:
+            - spec:
+                connectorRef: ShobhitNexus
+                repository: cdp-qa-automation-1
+                repositoryFormat: docker
+                tag: v1.0
+                digest: ""
+                spec:
+                  artifactPath: todolist
+                  repositoryPort: "8082"
+              identifier: Artifact
+              type: Nexus3Registry
+    type: Kubernetes

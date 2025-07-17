@@ -24,7 +24,7 @@ service:
               enableDeclarativeRollback: false
       artifacts:
         primary:
-          primaryArtifactRef: <+input>
+          primaryArtifactRef: Artifact
           sources:
             - spec:
                 connectorRef: ShobhitCDDocker

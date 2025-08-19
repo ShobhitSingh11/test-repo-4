@@ -6,6 +6,5 @@ pipeline:
       id: k8s-rolling-deploy_1
       service:
         id: remoteService5
-        ref: remoteService3
       action:
         uses: k8s_rolling_k8

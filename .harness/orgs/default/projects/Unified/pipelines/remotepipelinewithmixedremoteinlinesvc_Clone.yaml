@@ -1,0 +1,38 @@
+---
+pipeline:
+  clone:
+    disabled: true
+  stages:
+  - runtime: "shell"
+    id: "k8s-rolling-deploy"
+    service:
+      id: "RemoteService1"
+      ref: "remoteService1"
+    action:
+      uses: "k8s_rolling_k8"
+  - runtime: "shell"
+    id: "k8s-rolling-deploy_1"
+    service:
+      id: "RemoteService2"
+      ref: "remoteService2"
+    action:
+      uses: "k8s_rolling_k8"
+  - runtime: "shell"
+    id: "k8s-rolling-deploy_2"
+    service:
+      id: "RemoteService3"
+      ref: "main"
+    action:
+      uses: "k8s_rolling_k8"
+  - runtime: "shell"
+    id: "k8s-rolling-deploy_3"
+    service:
+      id: "InlineService1"
+    action:
+      uses: "k8s_rolling_k8"
+  - runtime: "shell"
+    id: "k8s-rolling-deploy_4"
+    service:
+      id: "InlineService2"
+    action:
+      uses: "k8s_rolling_k8"
